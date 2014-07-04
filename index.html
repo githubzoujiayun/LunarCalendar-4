@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lunar Calendar For Tizen</title>
+  <meta name="description" content="Lunar Calendar For Tizen">
+  <meta name="MobileOptimized" content="320">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/plugin/jquery.event.swipe.js"></script>
+  <script src="js/plugin/jquery.event.move.js"></script>
+</head>
+<body>
+  <div id="StcUI">
+    <div id="header">
+      <h1>农历黄历</h1>
+    </div>
+    <div id="StcUI_splashscreen">
+      <span class="stc-icon-loading"></span>
+    </div>
+    <div id="StcUI_modal">
+      <div class="innerHeader">
+        <h1 class="headTitle">择日</h1>
+      </div>
+      <div class="currentDateWrap">
+        <div class="dateTitle">
+          <div class="currentYear">2013年</div>
+          <div class="currentMonth">
+            <span class="month">4月</span><span class="monthE">April</span>
+          </div>
+          <div class="currentLunaryear">葵已年</div>
+          <div class="currentLunarAnimal">蛇年</div>
+        </div>
+        <div class="dateDetail">
+          <div class="dateWrap">
+            <div class="lunarDate">三月十八</div>
+            <div class="currentDate">
+              <div class="dateDay">1</div>
+              <div class="currentDay">星期六</div>
+              <div class="currentFes">愚人节、其他节</div>
+            </div>
+            <div class="lunarEraDate">甲卯月丁丑日</div>
+          </div>
+          <div class="cuurentAlmanac">
+            <div class="goodWrap">
+              <div class="goodLabel">宜：</div>
+              <div class="good">纳采、嫁娶、开光、出行、理发、会亲友、开市、安床、栽种、牧养、入殓、移柩、启攒</div>
+            </div>
+            <div class="badWrap">
+              <div class="badLabel">忌：</div>
+              <div class="bad">谢土、祈福、上梁、作灶、斋醮、修造、入宅、安门</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dateNav">
+        <ul class="day_list">
+        </ul>
+      </div>
+      <div class="innerFooter">
+        <span class="pick_day left_button">重新择日</span>
+        <span class="select_date left_button">农历详情</span>
+        <span class="back right_button">返回</span>
+      </div>
+    </div>
+    <div id="content">
+      <div id="calendar"></div>
+    </div>
+    <div id="footer">
+      <span class="select_date left_button">农历详情</span>
+      <span class="pick_day right_button">黄历择日</span>
+    </div>
+    <div id="StcUI_overlay"></div>
+    <div id="StcUI_popup" class="stc-ui-popup">
+      <h1 class="title"></h1>
+      <div class="popup_content"></div>
+    </div>
+    <div id="popupChooseDate" class="stc-ui-popup">
+      <h1 class="popup_title">选择公历日期</h1>
+      <div class="popup_content_wrap">
+        <div class="select_date_wrap">
+          <div class="year_wrap">
+            <div class="selecter_wrap">
+              <span class="add_button">+</span><input type="text" class="selecter_year" value='2013'><span class="dec_button">-</span>
+            </div>
+            <span class="label_selecter">年</span>
+          </div>
+          <div class="month_wrap">
+            <div class="selecter_wrap">
+              <span class="add_button">+</span><input type="text" class="selecter_month" value='2'><span class="dec_button">-</span>
+            </div>
+            <span class="label_selecter">月</span>
+          </div>
+          <div class="day_wrap">
+            <div class="selecter_wrap">
+              <span class="add_button">+</span><input type="text" class="selecter_day" value='23'><span class="dec_button">-</span>
+            </div>
+            <span class="label_selecter">日</span>
+          </div>
+        </div>
+        <div class="select_button_wrap">
+          <span class="button inline setdate">设定</span>
+          <span class="button inline settoday">今天</span>
+          <span class="button inline cancel">取消</span>
+        </div>
+      </div>
+    </div>
+    <div id="popupPickDay" class="stc-ui-popup">
+      <h1 class="popup_title">择日</h1>
+      <div class="popup_content_wrap">
+        <div class="option_wrap">
+          <select name="pick_string" id="pick_string">
+          </select>
+        </div>
+        <div class="date_range_wrap">
+          <div class="start_date_wrap"><input type="date" class="start_date" min="1901-01-01" max="2100-12-31"><span>起始日期</span></div>
+          <div class="end_date_wrap"><input type="date" class="end_date" min="1901-01-01" max="2100-12-31"><span>结束日期</span></div>
+        </div>
+        <div class="pick_button_wrap">
+          <span class="button pick_day">择日</span><span class="button cancel">取消</span>
+        </div>
+      </div>
+    </div>
+    <div id="StcUI_mask" class="stc-ui-loader">
+      <span class="ui-icon ui-icon-loading spin"></span>
+      <h1>读取中...</h1>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/testcase.js"></script>
+  <script src="js/almanac.js"></script>
+  <script src="js/Lunar.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

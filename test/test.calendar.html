@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test calendar.js</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/calendar.css">
+<link rel="stylesheet" href="stats.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/Lunar.js"></script>
+<script src="../js/calendar.js"></script>
+<script src="stats.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var stats = new Stats();
+		stats.setMode(1);
+		document.body.appendChild(stats.domElement);
+
+		var cal = Calendar({
+			rootElement : '#calendar',
+			animation : '3d'
+		});
+
+		setInterval(function() {
+			stats.begin();
+			cal.prevMonthAction();
+		}, 3000);
+
+		$('#calendar').bind('WebkitTransitionend', function() {
+			stats.end();
+		});
+	})
+</script>
+</head>
+<body>
+	<div id="calendar" style="width: 720px;"></div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>test lunar.js</title>
+  <link rel="stylesheet" href="qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="qunit.js"></script>
+  <script src="../js/Lunar.js"></script>
+  <script type="text/javascript">
+	    test( "test LunarDetail", function() {
+			//test 2012/3/5
+			var date=new Date(2012,2,5);
+			var lunar=new Lunar(date);
+			equal( lunar.year, 2012, "2012/3/5 : the gregorian year is 2012" );
+            equal( lunar.month, 2, "2012/3/5 : the 3th month in gregorian" );
+            equal( lunar.day, 5, "2012/3/5 : the 5th day in gregorian" );
+            equal( lunar.weekday, 1, "2012/3/5 : it's monday" );
+			equal( lunar.lunarYear, 2012, "2012/3/5 : the year is 2012" );
+			equal( lunar.lunarMonth, 2, "2012/3/5 : the 2th month in lunar" );
+			equal( lunar.lunarDay, 13, "2012/3/5 : the 13th day in lunar" );
+			equal( lunar.chineseLunarMonth, '二', "2012/3/5 : the chinese lunar month is '二'" );
+            equal( lunar.chineseLunarDay, '十三', "2012/3/5 : the chinese lunar day is '十三'" );
+			equal( lunar.isLunarLeapMonth, false, "2012/3/5 : this month isn't lunar leap month" );
+			equal( lunar.lunarLeapMonth, 4, "2012/3/5 : leap lunar month is 0" );
+			equal( lunar.lunarYearEraName, '壬辰', "2012/3/5 : the lunar year name is '壬辰'" );
+			equal( lunar.lunarMonthEraName, '癸卯', "2012/3/5 : the lunar month name is '癸卯'" );
+			equal( lunar.lunarDayEraName, '乙丑', "2012/3/5 : the lunar day name is '乙丑'" );
+			equal( lunar.lunarMonthDays, 29, "2012/3/5 : the lunar month days is 29" );
+			equal( lunar.gregorianMonthDays, 31, "2012/3/5 : gregorian month days is 31" );
+			equal( lunar.lunarFestival, '', "2012/3/5 : the lunar festival is ''" );
+			equal( lunar.chineseZodiac, '龙', "2012/3/5 : the chinese zodiac is '龙'" );
+			equal( lunar.solarTerms, '惊蛰', "2012/3/5 : the chinese solar terms is '惊蛰'" );
+			equal( lunar.gregorianFestival, '', "2012/3/5 : the solar festival is ''" );
+			
+			//test prev day
+		    var prevLunar = lunar.getPrevDay();
+		    equal( prevLunar.year, 2012, "2012/3/4 : the gregorian year is 2012" );
+            equal( prevLunar.month, 2, "2012/3/4 : the 3th month in gregorian" );
+            equal( prevLunar.day, 4, "2012/3/4 : the 4th day in gregorian" );
+            equal( prevLunar.weekday, 0, "2012/3/4 : it's sunday" );
+            equal( prevLunar.lunarYear, 2012, "2012/3/4 : the year is 2012" );
+            equal( prevLunar.lunarMonth, 2, "2012/3/4 : the 2th month in lunar" );
+            equal( prevLunar.lunarDay, 12, "2012/3/4 : the 12th day in lunar" );
+            equal( prevLunar.chineseLunarMonth, '二', "2012/3/4 : the chinese lunar month is '二'" );
+            equal( prevLunar.chineseLunarDay, '十二', "2012/3/4 : the chinese lunar day is '十二'" );
+            equal( prevLunar.isLunarLeapMonth, false, "2012/3/4 : this month isn't lunar leap month" );
+            equal( prevLunar.lunarLeapMonth, 4, "2012/3/4 : leap lunar month is 0" );
+            equal( prevLunar.lunarYearEraName, '壬辰', "2012/3/4 : the lunar year name is '壬辰'" );
+            equal( prevLunar.lunarMonthEraName, '壬寅', "2012/3/4 : the lunar month name is '壬寅'" );
+            equal( prevLunar.lunarDayEraName, '甲子', "2012/3/4 : the lunar day name is '甲子'" );
+            equal( prevLunar.lunarMonthDays, 29, "2012/3/4 : the lunar month days is 29" );
+            equal( prevLunar.gregorianMonthDays, 31, "2012/3/4 : gregorian month days is 31" );
+            equal( prevLunar.lunarFestival, '', "2012/3/4 : the lunar festival is ''" );
+            equal( prevLunar.chineseZodiac, '龙', "2012/3/4 : the chinese zodiac is '龙'" );
+            equal( prevLunar.solarTerms, '', "2012/3/4 : the chinese solar terms is ''" );
+            equal( prevLunar.gregorianFestival, '', "2012/3/4 : the solar festival is ''" );
+			
+            //test next day
+            var nextLunar = lunar.getNextDay();
+            equal( nextLunar.year, 2012, "2012/3/6 : the gregorian year is 2012" );
+            equal( nextLunar.month, 2, "2012/3/6 : the 3th month in gregorian" );
+            equal( nextLunar.day, 6, "2012/3/6 : the 6th day in gregorian" );
+            equal( nextLunar.weekday, 2, "2012/3/6 : it's tuesday" );
+            equal( nextLunar.lunarYear, 2012, "2012/3/6 : the year is 2012" );
+            equal( nextLunar.lunarMonth, 2, "2012/3/6 : the 2th month in lunar" );
+            equal( nextLunar.lunarDay, 14, "2012/3/6 : the 14th day in lunar" );
+            equal( nextLunar.chineseLunarMonth, '二', "2012/3/6 : the chinese lunar month is '二'" );
+            equal( nextLunar.chineseLunarDay, '十四', "2012/3/6 : the chinese lunar day is '十四'" );
+            equal( nextLunar.isLunarLeapMonth, false, "2012/3/6 : this month isn't lunar leap month" );
+            equal( nextLunar.lunarLeapMonth, 4, "2012/3/6 : leap lunar month is 0" );
+            equal( nextLunar.lunarYearEraName, '壬辰', "2012/3/6 : the lunar year name is '壬辰'" );
+            equal( nextLunar.lunarMonthEraName, '癸卯', "2012/3/6 : the lunar month name is '癸卯'" );
+            equal( nextLunar.lunarDayEraName, '丙寅', "2012/3/6 : the lunar day name is '丙寅'" );
+            equal( nextLunar.lunarMonthDays, 29, "2012/3/6 : the lunar month days is 29" );
+            equal( nextLunar.gregorianMonthDays, 31, "2012/3/6 : gregorian month days is 31" );
+            equal( nextLunar.lunarFestival, '', "2012/3/6 : the lunar festival is ''" );
+            equal( nextLunar.chineseZodiac, '龙', "2012/3/6 : the chinese zodiac is '龙'" );
+            equal( nextLunar.solarTerms, '', "2012/3/5 : the chinese solar terms is ''" );
+            equal( nextLunar.gregorianFestival, '', "2012/3/6 : the solar festival is ''" );
+            
+			//test 2012/5/21
+            var date=new Date(2012,4,21);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2012, "2012/5/21 : the gregorian year is 2012" );
+            equal( lunar.month, 4, "2012/5/21 : the 5th month in gregorian" );
+            equal( lunar.day, 21, "2012/5/21 : the 21th day in gregorian" );
+            equal( lunar.weekday, 1, "2012/5/21 : it's monday" );
+            equal( lunar.lunarYear, 2012, "2012/5/21 : the year is 2012" );
+            equal( lunar.lunarMonth, 4, "2012/5/21 : the 4th month in lunar" );
+            equal( lunar.lunarDay, 1, "2012/5/21 : the 1th day in lunar" );
+            equal( lunar.chineseLunarMonth, '四', "2012/5/21 : the chinese lunar month is '四'" );
+            equal( lunar.chineseLunarDay, '初一', "2012/5/21 : the chinese lunar day is '初一'" );
+            equal( lunar.isLunarLeapMonth, true, "2012/5/21 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 4, "2012/5/21 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '壬辰', "2012/5/21 : the lunar year name is '壬辰'" );
+            equal( lunar.lunarMonthEraName, '乙巳', "2012/5/21 : the lunar month name is '乙巳'" );
+            equal( lunar.lunarDayEraName, '壬午', "2012/5/21 : the lunar day name is '壬午'" );
+            equal( lunar.lunarMonthDays, 29, "2012/5/21 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 31, "2012/5/21 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '', "2012/5/21 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '龙', "2012/5/21 : the chinese zodiac is '龙'" );
+            equal( lunar.solarTerms, '小满', "2012/5/21 : the chinese solar terms is '小满'" );
+            equal( lunar.gregorianFestival, '', "2012/5/21 : the solar festival is ''" );
+			
+            //test 2013/2/9
+            var date=new Date(2013,1,9);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/2/9 : the gregorian year is 2013" );
+            equal( lunar.month, 1, "2013/2/9 : the 2th month in gregorian" );
+            equal( lunar.day, 9, "2013/2/9 : the 9th day in gregorian" );
+            equal( lunar.weekday, 6, "2013/2/9 : it's saturday" );
+            equal( lunar.lunarYear, 2012, "2013/2/9 : the year is 2012" );
+            equal( lunar.lunarMonth, 12, "2013/2/9 : the 12th month in lunar" );
+            equal( lunar.lunarDay, 29, "2013/2/9 : the 29th day in lunar" );
+            equal( lunar.chineseLunarMonth, '腊', "2013/2/9 : the chinese lunar month is '腊'" );
+            equal( lunar.chineseLunarDay, '廿九', "2013/2/9 : the chinese lunar day is '廿九'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/2/9 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 4, "2013/2/9 : leap lunar month is 4" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/2/9 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '甲寅', "2013/2/9 : the lunar month name is '甲寅'" );
+            equal( lunar.lunarDayEraName, '丙午', "2013/2/9 : the lunar day name is '丙午'" );
+            equal( lunar.lunarMonthDays, 29, "2013/2/9 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 28, "2013/2/9 : the gregorian month days is 28" );
+            equal( lunar.lunarFestival, '除夕', "2013/2/9 : the lunar festival is '除夕'" );
+            equal( lunar.chineseZodiac, '龙', "2013/2/9 : the chinese zodiac is '龙'" );
+            equal( lunar.solarTerms, '', "2013/2/9 : the chinese solar terms is ''" );
+            equal( lunar.gregorianFestival, '', "2013/2/9 : the solar festival is ''" );
+            
+            //test 2013/2/10
+            var date=new Date(2013,1,10);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/2/10 : the gregorian year is 2013" );
+            equal( lunar.month, 1, "2013/2/10 : the 2th month in gregorian" );
+            equal( lunar.day, 10, "2013/2/10 : the 10th day in gregorian" );
+            equal( lunar.weekday, 0, "2013/2/10 : it's sunday" );
+            equal( lunar.lunarYear, 2013, "2013/2/10 : the year is 2013" );
+            equal( lunar.lunarMonth, 1, "2013/2/10 : the 1th month in lunar" );
+            equal( lunar.lunarDay, 1, "2013/2/10 : the 1th day in lunar" );
+            equal( lunar.chineseLunarMonth, '正', "2013/2/10 : the chinese lunar month is '正'" );
+            equal( lunar.chineseLunarDay, '初一', "2013/2/10 : the chinese lunar day is '初一'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/2/10 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/2/10 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/2/10 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '甲寅', "2013/2/10 : the lunar month name is '甲寅'" );
+            equal( lunar.lunarDayEraName, '丁未', "2013/2/10 : the lunar day name is '丁未'" );
+            equal( lunar.lunarMonthDays, 30, "2013/2/10 : the lunar month days is 30" );
+            equal( lunar.gregorianMonthDays, 28, "2013/2/10 : the gregorian month days is 28" );
+            equal( lunar.lunarFestival, '春节', "2013/2/10 : the lunar festival is '春节'" );
+            equal( lunar.chineseZodiac, '蛇', "2013/2/10 : the chinese zodiac is '蛇'" );
+            equal( lunar.solarTerms, '', "2013/2/10 : the chinese solar terms is ''" );
+            equal( lunar.gregorianFestival, '世界气象日', "2013/2/10 : the solar festival is '世界气象日'" );
+            
+            //test 2013/2/11
+            var date=new Date(2013,1,11);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/2/11 : the gregorian year is 2013" );
+            equal( lunar.month, 1, "2013/2/11 : the 2th month in gregorian" );
+            equal( lunar.day, 11, "2013/2/11 : the 11th day in gregorian" );
+            equal( lunar.weekday, 1, "2013/2/11 : it's monday" );
+            equal( lunar.lunarYear, 2013, "2013/2/11 : the year is 2013" );
+            equal( lunar.lunarMonth, 1, "2013/2/11 : the 1th month in lunar" );
+            equal( lunar.lunarDay, 2, "2013/2/11 : the 2th day in lunar" );
+            equal( lunar.chineseLunarMonth, '正', "2013/2/11 : the chinese lunar month is '正'" );
+            equal( lunar.chineseLunarDay, '初二', "2013/2/11 : the chinese lunar day is '初二'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/2/11 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/2/11 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/2/11 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '甲寅', "2013/2/11 : the lunar month name is '甲寅'" );
+            equal( lunar.lunarDayEraName, '戊申', "2013/2/11 : the lunar day name is '戊申'" );
+            equal( lunar.lunarMonthDays, 30, "2013/2/11 : the lunar month days is 30" );
+            equal( lunar.gregorianMonthDays, 28, "2013/2/11 : the gregorian month days is 28" );
+            equal( lunar.lunarFestival, '年初二', "2013/2/11 : the lunar festival is '年初二'" );
+            equal( lunar.chineseZodiac, '蛇', "2013/2/11 : the chinese zodiac is '蛇'" );
+            equal( lunar.solarTerms, '', "2013/2/11 : the chinese solar terms is ''" );
+            equal( lunar.gregorianFestival, '', "2013/2/11 : the solar festival is ''" );
+            
+			//test 2013/4/2
+			var date=new Date(2013,3,2);
+			var lunar=new Lunar(date);
+			equal( lunar.year, 2013, "2013/4/2 : the gregorian year is 2013" );
+            equal( lunar.month, 3, "2013/4/2 : the 4th month in gregorian" );
+            equal( lunar.day, 2, "2013/4/2 : the 2th day in gregorian" );
+            equal( lunar.weekday, 2, "2013/4/2 : it's tuesday" );
+			equal( lunar.lunarYear, 2013, "2013/4/2 : the year is 2013" );
+			equal( lunar.lunarMonth, 2, "2013/4/2 : the 2th month in lunar" );
+			equal( lunar.lunarDay, 22, "2013/4/2 : the 22th day in lunar" );
+			equal( lunar.chineseLunarMonth, '二', "2013/4/2 : the chinese lunar month is '二'" );
+            equal( lunar.chineseLunarDay, '廿二', "2013/4/2 : the chinese lunar day is '廿二'" );
+			equal( lunar.isLunarLeapMonth, false, "2013/4/2 : this month isn't lunar leap month" );
+			equal( lunar.lunarLeapMonth, 0, "2013/4/2 : leap lunar month is 0" );
+			equal( lunar.lunarYearEraName, '癸巳', "2013/4/2 : the lunar year name is '癸巳'" );
+			equal( lunar.lunarMonthEraName, '乙卯', "2013/4/2 : the lunar month name is '乙卯'" );
+			equal( lunar.lunarDayEraName, '戊戌', "2013/4/2 : the lunar day name is '戊戌'" );
+			equal( lunar.lunarMonthDays, 29, "2013/4/2 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 30, "2013/4/2 : the gregorian month days is 30" );
+            equal( lunar.lunarFestival, '', "2013/4/2 : the lunar festival is ''" );
+			equal( lunar.chineseZodiac, '蛇', "2013/4/2 : the chinese zodiac is '蛇'" );
+			equal( lunar.solarTerms, '', "2013/4/2 : the chinese solar terms is ''" );
+			equal( lunar.gregorianFestival, '', "2013/4/2 : the solar festival is ''" );
+			
+			//test 2013/4/4
+            var date=new Date(2013,3,4);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/4/4 : the gregorian year is 2013" );
+            equal( lunar.month, 3, "2013/4/4 : the 4th month in gregorian" );
+            equal( lunar.day, 4, "2013/4/4 : the 4th day in gregorian" );
+            equal( lunar.weekday, 4, "2013/4/4 : it's thursday" );
+            equal( lunar.lunarYear, 2013, "2013/4/4 : the year is 2013" );
+            equal( lunar.lunarMonth, 2, "2013/4/4 : the 2th month in lunar" );
+            equal( lunar.lunarDay, 24, "2013/4/4 : the 24th day in lunar" );
+            equal( lunar.chineseLunarMonth, '二', "2013/4/4 : the chinese lunar month is '二'" );
+            equal( lunar.chineseLunarDay, '廿四', "2013/4/4 : the chinese lunar day is '廿四'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/4/4 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/4/4 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/4/4 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '丙辰', "2013/4/4 : the lunar month name is '丙辰'" );
+            equal( lunar.lunarDayEraName, '庚子', "2013/4/4 : the lunar day name is '庚子'" );
+            equal( lunar.lunarMonthDays, 29, "2013/4/4 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 30, "2013/4/4 : the gregorian month days is 30" );
+            equal( lunar.lunarFestival, '', "2013/4/4 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '蛇', "2013/4/4 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '', "2013/4/4 : the solar festival is ''" );
+            equal( lunar.solarTerms, '清明', "2013/4/4 : the chinese solar terms is '清明'" );
+            
+            //test 2013/4/10
+            var date=new Date(2013,3,10);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/4/10 : the gregorian year is 2013" );
+            equal( lunar.month, 3, "2013/4/10 : the 4th month in gregorian" );
+            equal( lunar.day, 10, "2013/4/10 : the 10th day in gregorian" );
+            equal( lunar.weekday, 3, "2013/4/10 : it's wednesday" );
+            equal( lunar.lunarYear, 2013, "2013/4/10 : the year is 2013" );
+            equal( lunar.lunarMonth, 3, "2013/4/10 : the 3th month in lunar" );
+            equal( lunar.lunarDay, 1, "2013/4/10 : the 1th day in lunar" );
+            equal( lunar.chineseLunarMonth, '三', "2013/4/10 : the chinese lunar month is '三'" );
+            equal( lunar.chineseLunarDay, '初一', "2013/4/10 : the chinese lunar day is '初一'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/4/10 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/4/10 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/4/10 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '丙辰', "2013/4/10 : the lunar month name is '丙辰'" );
+            equal( lunar.lunarDayEraName, '丙午', "2013/4/10 : the lunar day name is '丙午'" );
+            equal( lunar.lunarMonthDays, 30, "2013/4/10 : the lunar month days is 30" );
+            equal( lunar.gregorianMonthDays, 30, "2013/4/10 : the gregorian month days is 30" );
+            equal( lunar.lunarFestival, '', "2013/4/10 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '蛇', "2013/4/10 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '', "2013/4/10 : the solar festival is ''" );
+            equal( lunar.solarTerms, '', "2013/4/10 : the chinese solar terms is ''" );
+            
+            //test 2013/5/1
+            var date=new Date(2013,4,1);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/5/1 : the gregorian year is 2013" );
+            equal( lunar.month, 4, "2013/5/1 : the 4th month in gregorian" );
+            equal( lunar.day, 1, "2013/5/1 : the 1th day in gregorian" );
+            equal( lunar.weekday, 3, "2013/5/1 : it's wednesday" );
+            equal( lunar.lunarYear, 2013, "2013/5/1 : the year is 2013" );
+            equal( lunar.lunarMonth, 3, "2013/5/1 : the 3th month in lunar" );
+            equal( lunar.lunarDay, 22, "2013/5/1 : the 22th day in lunar" );
+            equal( lunar.chineseLunarMonth, '三', "2013/5/1 : the chinese lunar month is '三'" );
+            equal( lunar.chineseLunarDay, '廿二', "2013/5/1 : the chinese lunar day is '廿二'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/5/1 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/5/1 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/5/1 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '丙辰', "2013/5/1 : the lunar month name is '丙辰'" );
+            equal( lunar.lunarDayEraName, '丁卯', "2013/5/1 : the lunar day name is '丁卯'" );
+            equal( lunar.lunarMonthDays, 30, "2013/5/1 : the lunar month days is 30" );
+            equal( lunar.gregorianMonthDays, 31, "2013/5/1 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '', "2013/5/1 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '蛇', "2013/5/1 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '国际劳动节', "2013/5/1 : the solar festival is '国际劳动节'" );
+            equal( lunar.solarTerms, '', "2013/5/1 : the chinese solar terms is ''" );
+            
+            //test 2013/8/13
+            var date=new Date(2013,7,13);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/8/13 : the gregorian year is 2013" );
+            equal( lunar.month, 7, "2013/8/13 : the 8th month in gregorian" );
+            equal( lunar.day, 13, "2013/8/13 : the 13th day in gregorian" );
+            equal( lunar.weekday, 2, "2013/8/13 : it's tuesday" );
+            equal( lunar.lunarYear, 2013, "2013/8/13 : the year is 2013" );
+            equal( lunar.lunarMonth, 7, "2013/8/13 : the 7th month in lunar" );
+            equal( lunar.lunarDay, 7, "2013/8/13 : the 7th day in lunar" );
+            equal( lunar.chineseLunarMonth, '七', "2013/8/13 : the chinese lunar month is '七'" );
+            equal( lunar.chineseLunarDay, '初七', "2013/8/13 : the chinese lunar day is '初七'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/8/13 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/8/13 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/8/13 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '庚申', "2013/8/13 : the lunar month name is '庚申'" );
+            equal( lunar.lunarDayEraName, '辛亥', "2013/8/13 : the lunar day name is '辛亥'" );
+            equal( lunar.lunarMonthDays, 29, "2013/8/13 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 31, "2013/8/13 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '七夕', "2013/8/13 : the lunar festival is '七夕'" );
+            equal( lunar.chineseZodiac, '蛇', "2013/8/13 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '', "2013/8/13 : the solar festival is ''" );
+            equal( lunar.solarTerms, '', "2013/8/13 : the chinese solar terms is ''" );
+            
+            //test 2013/10/23
+            var date=new Date(2013,9,23);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/10/23 : the gregorian year is 2013" );
+            equal( lunar.month, 9, "2013/10/23 : the 10th month in gregorian" );
+            equal( lunar.day, 23, "2013/10/23 : the 23th day in gregorian" );
+            equal( lunar.weekday, 3, "2013/10/23 : it's wednesday" );
+            equal( lunar.lunarYear, 2013, "2013/10/23 : the year is 2013" );
+            equal( lunar.lunarMonth, 9, "2013/10/23 : the 9th month in lunar" );
+            equal( lunar.lunarDay, 19, "2013/10/23 : the 19th day in lunar" );
+            equal( lunar.chineseLunarMonth, '九', "2013/10/23 : the chinese lunar month is '九'" );
+            equal( lunar.chineseLunarDay, '十九', "2013/10/23 : the chinese lunar day is '十九'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/10/23 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/10/23 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/10/23 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '壬戌', "2013/10/23 : the lunar month name is '壬戌'" );
+            equal( lunar.lunarDayEraName, '壬戌', "2013/10/23 : the lunar day name is '壬戌'" );
+            equal( lunar.lunarMonthDays, 29, "2013/10/23 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 31, "2013/10/23 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '', "2013/10/23 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '蛇', "2013/10/23 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '', "2013/10/23 : the solar festival is ''" );
+            equal( lunar.solarTerms, '霜降', "2013/10/23 : the chinese solar terms is '霜降'" );
+            
+            //test 2013/12/25
+            var date=new Date(2013,11,25);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2013, "2013/12/25 : the gregorian year is 2013" );
+            equal( lunar.month, 11, "2013/12/25 : the 12th month in gregorian" );
+            equal( lunar.day, 25, "2013/12/25 : the 25th day in gregorian" );
+            equal( lunar.weekday, 3, "2013/12/25 : it's wednesday" );
+            equal( lunar.lunarYear, 2013, "2013/12/25 : the year is 2013" );
+            equal( lunar.lunarMonth, 11, "2013/12/25 : the 11th month in lunar" );
+            equal( lunar.lunarDay, 23, "2013/12/25 : the 23th day in lunar" );
+            equal( lunar.chineseLunarMonth, '十一', "2013/12/25 : the chinese lunar month is '十一'" );
+            equal( lunar.chineseLunarDay, '廿三', "2013/12/25 : the chinese lunar day is '廿三'" );
+            equal( lunar.isLunarLeapMonth, false, "2013/12/25 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2013/12/25 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2013/12/25 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '甲子', "2013/12/25 : the lunar month name is '甲子'" );
+            equal( lunar.lunarDayEraName, '乙丑', "2013/12/25 : the lunar day name is '乙丑'" );
+            equal( lunar.lunarMonthDays, 29, "2013/12/25 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 31, "2013/12/25 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '', "2013/12/25 : the lunar festival is ''" );
+            equal( lunar.chineseZodiac, '蛇', "2013/12/25 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '圣诞节 世界强化免疫日', "2013/12/25 : the solar festival is '圣诞节 世界强化免疫日'" );
+            equal( lunar.solarTerms, '', "2013/12/25 : the chinese solar terms is ''" );
+            
+            //test 2014/1/30
+            var date=new Date(2014,0,30);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2014, "2014/1/30 : the gregorian year is 2014" );
+            equal( lunar.month, 0, "2014/1/30 : the 1th month in gregorian" );
+            equal( lunar.day, 30, "2014/1/30 : the 30th day in gregorian" );
+            equal( lunar.weekday, 4, "2014/1/30 : it's thursday" );
+            equal( lunar.lunarYear, 2013, "2014/1/30 : the year is 2013" );
+            equal( lunar.lunarMonth, 12, "2014/1/30 : the 12th month in lunar" );
+            equal( lunar.lunarDay, 30, "2014/1/30 : the 30th day in lunar" );
+            equal( lunar.chineseLunarMonth, '腊', "2014/1/30 : the chinese lunar month is '腊'" );
+            equal( lunar.chineseLunarDay, '三十', "2014/1/30 : the chinese lunar day is '三十'" );
+            equal( lunar.isLunarLeapMonth, false, "2014/1/30 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 0, "2014/1/30 : leap lunar month is 0" );
+            equal( lunar.lunarYearEraName, '癸巳', "2014/1/30 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '乙丑', "2014/1/30 : the lunar month name is '乙丑'" );
+            equal( lunar.lunarDayEraName, '辛丑', "2014/1/30 : the lunar day name is '辛丑'" );
+            equal( lunar.lunarMonthDays, 30, "2014/1/30 : the lunar month days is 30" );
+            equal( lunar.gregorianMonthDays, 31, "2014/1/30 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '除夕', "2014/1/30 : the lunar festival is '除夕'" );
+            equal( lunar.chineseZodiac, '蛇', "2014/1/30 : the chinese zodiac is '蛇'" );
+            equal( lunar.gregorianFestival, '', "2014/1/30 : the solar festival is ''" );
+            equal( lunar.solarTerms, '', "2014/1/30 : the chinese solar terms is ''" );
+            
+            //test 2014/1/31
+            var date=new Date(2014,0,31);
+            var lunar=new Lunar(date);
+            equal( lunar.year, 2014, "2014/1/31 : the gregorian year is 2014" );
+            equal( lunar.month, 0, "2014/1/31 : the 1th month in gregorian" );
+            equal( lunar.day, 31, "2014/1/31 : the 31th day in gregorian" );
+            equal( lunar.weekday, 5, "2014/1/31 : it's friday" );
+            equal( lunar.lunarYear, 2014, "2014/1/31 : the year is 2013" );
+            equal( lunar.lunarMonth, 1, "2014/1/31 : the 1th month in lunar" );
+            equal( lunar.lunarDay, 1, "2014/1/31 : the 1th day in lunar" );
+            equal( lunar.chineseLunarMonth, '正', "2014/1/31 : the chinese lunar month is '正'" );
+            equal( lunar.chineseLunarDay, '初一', "2014/1/31 : the chinese lunar day is '初一'" );
+            equal( lunar.isLunarLeapMonth, false, "2014/1/31 : this month isn't lunar leap month" );
+            equal( lunar.lunarLeapMonth, 9, "2014/1/31 : leap lunar month is 9" );
+            equal( lunar.lunarYearEraName, '癸巳', "2014/1/31 : the lunar year name is '癸巳'" );
+            equal( lunar.lunarMonthEraName, '乙丑', "2014/1/31 : the lunar month name is '乙丑'" );
+            equal( lunar.lunarDayEraName, '壬寅', "2014/1/31 : the lunar day name is '壬寅'" );
+            equal( lunar.lunarMonthDays, 29, "2014/1/31 : the lunar month days is 29" );
+            equal( lunar.gregorianMonthDays, 31, "2014/1/31 : gregorian month days is 31" );
+            equal( lunar.lunarFestival, '春节', "2014/1/31 : the lunar festival is '春节'" );
+            equal( lunar.chineseZodiac, '马', "2014/1/31 : the chinese zodiac is '马'" );
+            equal( lunar.gregorianFestival, '', "2014/1/31 : the solar festival is ''" );
+            equal( lunar.solarTerms, '', "2014/1/31 : the chinese solar terms is ''" );
+	    });
+  </script>
+</body>
+</html>
